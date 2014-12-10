@@ -32,7 +32,7 @@ import scala.reflect.ClassTag
  */
 
 class GeneralizedKMeans[P <: FP : ClassTag, C <: FP : ClassTag](
-                                                                 pointOps: PointOps[P, C], maxIterations: Int) extends MultiKMeansClusterer[P, C] {
+                                                                 pointOps: PointOps[P, C], maxIterations: Int) extends MultiKMeansClusterer[P, C]  {
 
   def cluster(data: RDD[P], centers: Array[Array[C]]): (Double, GeneralizedKMeansModel[P, C]) = {
     val runs = centers.length

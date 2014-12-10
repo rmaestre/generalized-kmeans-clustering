@@ -17,7 +17,7 @@
 
 package com.massivedatascience.clusterer.base
 
-import com.massivedatascience.clusterer.metrics.FastEuclideanOps
+import com.massivedatascience.clusterer.metrics.DTWOps
 import org.apache.spark.rdd.RDD
 import org.apache.spark.Logging
 
@@ -37,20 +37,20 @@ object KMeans extends Logging {
   val K_MEANS_PARALLEL = "k-means||"
 
   def train(data: RDD[Vector], k: Int, maxIterations: Int, runs: Int, mode: String): KMeansModel =
-    new KMeansModel(doTrain(new FastEuclideanOps)(data, k, maxIterations, runs, mode)._2)
+    new KMeansModel(doTrain(new DTWOps)(data, k, maxIterations, runs, mode)._2)
 
   /**
    * Trains a k-means model using specified parameters and the default values for unspecified.
    */
   def train(data: RDD[Vector], k: Int, maxIterations: Int): KMeansModel =
-    new KMeansModel(doTrain(new FastEuclideanOps)(data, k, maxIterations)._2)
+    new KMeansModel(doTrain(new DTWOps)(data, k, maxIterations)._2)
 
 
   /**
    * Trains a k-means model using specified parameters and the default values for unspecified.
    */
   def train(data: RDD[Vector], k: Int, maxIterations: Int, runs: Int): KMeansModel =
-    new KMeansModel(doTrain(new FastEuclideanOps)(data, k, maxIterations, runs)._2)
+    new KMeansModel(doTrain(new DTWOps)(data, k, maxIterations, runs)._2)
 
 
   def doTrain[P <: FP, C <: FP](pointOps: PointOps[P, C])(

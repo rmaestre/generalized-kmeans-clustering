@@ -24,7 +24,7 @@ import org.apache.spark.mllib.linalg.Vector
 import org.apache.spark.rdd.RDD
 
 
-class KMeansModel(specific: GeneralizedKMeansModel[_, _]) {
+class KMeansModel(specific: GeneralizedKMeansModel[_, _]) extends java.io.Serializable {
 
   val k: Int = specific.k
 
